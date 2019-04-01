@@ -1,15 +1,16 @@
 # dundry
-A project for which contents are to be defined
+
+Dundry is a village and civil parish, situated on Dundry Hill to the south of Bristol.
+
+The villagers can greet visitors in different languages: English, French, etc.
 
 ## Project Structure
 
 This project has three subsystems
 
-1. dundry-a-lib
-2. dundry-b-lib
-3. dundry-app
-
-where #3 depends on #1 and #2
+1. dundry-a-lib: keeping the dictionary of greetings 
+2. dundry-b-lib: choosing a language of greeting if the visitor prefers a random language
+3. dundry-app: the main driver program making use the above two libraries
 
 ## How to run
 
@@ -23,9 +24,9 @@ $ java -jar _path_to_/dundry-app-1.0-all.jar _arg0_
 
 _arg0_ is optional and is default to 0 (English greeting)
 
-If it is "*" or "a", then the greetings of all languages will be shown
+If _arg0_ is "*" or "a", then the greetings of all languages will be shown
 
-If it is "r", then the greetings of a random language will be shown
+If _arg0_ is "r", then the greetings of a random language will be shown
 
 Examples:
 ```
