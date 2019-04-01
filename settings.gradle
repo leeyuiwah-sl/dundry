@@ -10,3 +10,4 @@
 rootProject.name = 'dundry'
 
 include 'dundry-b-lib'
+include 'dundry-app'
