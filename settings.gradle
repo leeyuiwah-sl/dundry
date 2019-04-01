@@ -9,5 +9,6 @@
 
 rootProject.name = 'dundry'
 
+include 'dundry-a-lib'
 include 'dundry-b-lib'
 include 'dundry-app'

@@ -5,6 +5,7 @@ plugins {
 }
 
 dependencies {
+    compile project(':dundry-a-lib') 
     compile project(':dundry-b-lib') 
 }
 
