@@ -7,13 +7,15 @@ public class DundryApp {
 
     public static void main(String[] args) {
         Greeter greeter = new Greeter();
-        IndexGen gen = new IndexGen(1);
+        IndexGen gen = new IndexGen(greeter.getNumOfLang());
         
         int langMin = 0; // default
-        int langMax = 1; // default
+        int langMax = 1; // default: Note that we use an exclusive semantics
+        boolean parseFailed = false;
         if (args.length==1) {
             String langString = args[0];
-            if (langString.equals("*")) {
+            if (langString.equals("*")
+                    || langString.equals("a")) {
                 /* 
                  * Show all languages
                  */
@@ -22,19 +24,26 @@ public class DundryApp {
                 /*
                  * Show one a random language
                  */
-                langMin = langMax = gen.gen();
+                langMin = gen.gen();
+                langMax = langMin + 1;      // exclusive of this boundary
             } else {
                 /*
                  * Show only one language as specified
                  */
                 try {
                     langMin = Integer.parseInt(langString);
-                    langMax = langMin + 1; // exclusive boundary
+                    langMax = langMin + 1; // exclusive of this boundary
                 } catch (NumberFormatException ex) {
-                    String msg = String.format("language can only be one of these: "
-                            + "'*', 'r', or %d-%d", 0, greeter.getNumOfLang()-1);
-                    throw new IllegalArgumentException(msg);
+                    parseFailed = true;
                 }
+            }
+            
+            if (parseFailed || langMax>greeter.getNumOfLang()) {
+                String msg = String.format("Language can only be one of these: "
+                        + "'*', 'r', or %d-%d, but you supplied %s", 
+                        0, greeter.getNumOfLang()-1, langString);
+                System.err.println(msg);
+                return;                
             }
         }
         

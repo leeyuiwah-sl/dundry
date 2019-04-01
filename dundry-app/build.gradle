@@ -9,4 +9,15 @@ dependencies {
     compile project(':dundry-b-lib') 
 }
 
+jar {
+  manifest {
+    attributes(
+      'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
+      'Main-Class': 'dundry.app.DundryApp'
+    )
+  }
+  from {
+	configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+  }
+}
 mainClassName = 'dundry.app.DundryApp'
