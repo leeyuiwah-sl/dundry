@@ -5,6 +5,8 @@ plugins {
 }
 
 dependencies {
+    compile project(':dundry-a-lib') 
+    compile project(':dundry-b-lib') 
     implementation project(':dundry-a-lib') 
     implementation project(':dundry-b-lib') 
 }
@@ -20,4 +22,5 @@ jar {
 	configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
   }
 }
+
 mainClassName = 'dundry.app.DundryApp'

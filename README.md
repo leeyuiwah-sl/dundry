@@ -51,9 +51,14 @@ follow the procedures of this page to install it:
 
   https://docs.gradle.org/current/userguide/installation.html
 
+Download the project zip file, and unzip it and put the top-level directory (e.g. `dundry-master` into a centain top-level directory _top_dir_  
+
+(Below assumes that you are doing this in a Windows environment.  If you are using UNIX instead, then swap the executable `gradlew.bat` for `gradlew`)
+
 ```
 $ cd _top_dir_
-$ gradlew build
+$ gradle wrapper 
+$ gradlew.bat build
 ```
 
 ## Todo
