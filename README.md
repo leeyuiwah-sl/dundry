@@ -15,10 +15,10 @@ where #3 depends on #1 and #2
 
 Pre-requisit: You should have Java JRE or JDK installed on your system
 
-If you download the jar file (e.g. dundry-app-1.0.jar) directly from our distribution site, just run this command:
+If you download the jar file (e.g. dundry-app-1.0-all.jar) directly from our distribution site, just run this command:
 
 ```
-$ java -jar _path_to_/dundry-app-1.0.jar _arg0_
+$ java -jar _path_to_/dundry-app-1.0-all.jar _arg0_
 ```
 
 _arg0_ is optional and is default to 0 (English greeting)
@@ -29,17 +29,17 @@ If it is "r", then the greetings of a random language will be shown
 
 Examples:
 ```
-dundry>java -jar dundry-app/build/libs/dundry-app-1.0.jar
+dundry>java -jar dundry-app/build/libs/dundry-app-1.0-all.jar
 Hello, World!
-dundry>java -jar dundry-app/build/libs/dundry-app-1.0.jar 0
+dundry>java -jar dundry-app/build/libs/dundry-app-1.0-all.jar 0
 Hello, World!
-dundry>java -jar dundry-app/build/libs/dundry-app-1.0.jar 1
+dundry>java -jar dundry-app/build/libs/dundry-app-1.0-all.jar 1
 Bonjour, Le Monde!
-dundry>java -jar dundry-app/build/libs/dundry-app-1.0.jar r
+dundry>java -jar dundry-app/build/libs/dundry-app-1.0-all.jar r
 Hello, World!
-dundry>java -jar dundry-app/build/libs/dundry-app-1.0.jar r
+dundry>java -jar dundry-app/build/libs/dundry-app-1.0-all.jar r
 Bonjour, Le Monde!
-dundry>java -jar dundry-app/build/libs/dundry-app-1.0.jar "*"
+dundry>java -jar dundry-app/build/libs/dundry-app-1.0-all.jar a
 Hello, World!
 Bonjour, Le Monde!
 ```
@@ -59,6 +59,11 @@ Download the project zip file, and unzip it and put the top-level directory (e.g
 $ cd _top_dir_
 $ gradle wrapper 
 $ gradlew.bat build
+
+$ # test run the program
+$ java -jar dundry-app/build/libs/dundry-app-1.0-all.jar a
+Hello, World!
+Bonjour, Le Monde!
 ```
 
 ## Todo
