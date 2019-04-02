@@ -10,6 +10,8 @@ import dundry.model.Item;
 public class DundryApp {
 
     public static void main(String[] args) {
+        redirectStdErr();
+        
         Greeter greeter = new Greeter();
         IndexGen gen = new IndexGen(greeter.getNumOfLang());
         
@@ -66,6 +68,14 @@ public class DundryApp {
         msg = String.format("Total number of items: %d%n", items.size());
         System.out.print(msg);
 
+    }
+
+    final static boolean debug = false;
+    private static void redirectStdErr() {
+        if (!debug) {
+            System.err.close();
+        }
+        
     }
 
 }
