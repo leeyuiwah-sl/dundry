@@ -4,45 +4,39 @@ Dundry is a village and civil parish, situated on Dundry Hill to the south of Br
 
 The villagers can greet visitors in different languages: English, French, etc.
 
+They also have a hobby of playing with some data items, and they love to show those data items to their visitor after the greeting.
+
 ## Project Structure
 
 This project has three subsystems
 
 1. dundry-a-lib: keeping the dictionary of greetings 
-2. dundry-b-lib: choosing a language of greeting if the visitor prefers a random language
+2. dundry-b-lib: keeping a DataManager for the data items
 3. dundry-app: the main driver program making use the above two libraries
 
 ## How to run
 
-Pre-requisit: You should have Java JRE or JDK installed on your system
+Pre-requisit: 
+
+1. You should have Java JRE or JDK installed on your system
+2. For now the DataManager is backed by a local MySQL instance.  You should have set up this instance with a database and a table.  Please see the section for "Setting Up a Local Database"
 
 If you download the jar file (e.g. dundry-app-1.0-all.jar) directly from our distribution site, just run this command:
 
 ```
-$ java -jar _path_to_/dundry-app-1.0-all.jar _arg0_
+$ java -jar _path_to_/dundry-app-1.0-all.jar 
 ```
-
-_arg0_ is optional and is default to 0 (English greeting)
-
-If _arg0_ is "*" or "a", then the greetings of all languages will be shown
-
-If _arg0_ is "r", then the greetings of a random language will be shown
 
 Examples:
 ```
 dundry>java -jar dundry-app/build/libs/dundry-app-1.0-all.jar
 Hello, World!
-dundry>java -jar dundry-app/build/libs/dundry-app-1.0-all.jar 0
-Hello, World!
-dundry>java -jar dundry-app/build/libs/dundry-app-1.0-all.jar 1
-Bonjour, Le Monde!
-dundry>java -jar dundry-app/build/libs/dundry-app-1.0-all.jar r
-Hello, World!
-dundry>java -jar dundry-app/build/libs/dundry-app-1.0-all.jar r
-Bonjour, Le Monde!
-dundry>java -jar dundry-app/build/libs/dundry-app-1.0-all.jar a
-Hello, World!
-Bonjour, Le Monde!
+Got 4 items from the DB
+         1        100     191.24 AAPL
+         2        200     168.70 FB
+         3        150    1194.43 GOOG
+         4        200    1814.19 AMZN
+Total number of items: 4
 ```
 
 ## How to build (For Developers only)
@@ -64,10 +58,15 @@ $ gradlew.bat build
 $ # test run the program
 $ java -jar dundry-app/build/libs/dundry-app-1.0-all.jar a
 Hello, World!
-Bonjour, Le Monde!
+Got 4 items from the DB
+         1        100     191.24 AAPL
+         2        200     168.70 FB
+         3        150    1194.43 GOOG
+         4        200    1814.19 AMZN
+Total number of items: 4
 ```
 
-## Setup a local database
+## Setting Up a Local Database
 
 1. Download and configure a local MySQL database
 
@@ -83,8 +82,11 @@ create table test_table  (
   test_string 		varchar(256),
   primary key		(test_table_id)
 );
+```
 
 3. Insert some data into the database manually.  
+
+```
 insert into test_table values 
 (null, 100, 191.24, 	"AAPL"),
 (null, 200, 168.70, 	"FB"),
@@ -92,7 +94,13 @@ insert into test_table values
 (null, 200, 1814.19, 	"AMZN");
 ```
 
-4. Create a DB user for the JDBC connection into the DB
+4. Testing the table contents using an SQL query
+
+```
+select * from test_table;
+```
+
+5. Create a DB user for the JDBC connection into the DB
 
 ```
 create user 'dbUser'@'localhost';
@@ -106,3 +114,5 @@ grant all on dundry.* to 'dbUser'@'localhost';
 2. Refactor common setting in gradle scripts of sub-systems
 
 3. Add logging 
+
+4. Move the DB instance to the cloud so that casual users do not need to set up a local database instance to try out the program.
