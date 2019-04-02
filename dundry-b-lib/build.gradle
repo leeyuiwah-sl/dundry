@@ -4,5 +4,7 @@ plugins {
 }
 
 dependencies {
+	implementation 'org.hibernate:hibernate-core:5.4.2.Final'
 	testImplementation 'junit:junit:4.12'
+	runtime "mysql:mysql-connector-java:8.0.15"
 }

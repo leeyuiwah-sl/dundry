@@ -67,6 +67,38 @@ Hello, World!
 Bonjour, Le Monde!
 ```
 
+## Setup a local database
+
+1. Download and configure a local MySQL database
+
+2. Create a database and a table
+```
+create database dundry;
+use dundry;
+drop table if exists test_table;
+create table test_table  (
+  test_table_id	 	int not null auto_increment,
+  test_int	 		int,
+  test_float	 	float,
+  test_string 		varchar(256),
+  primary key		(test_table_id)
+);
+
+3. Insert some data into the database manually.  
+insert into test_table values 
+(null, 100, 191.24, 	"AAPL"),
+(null, 200, 168.70, 	"FB"),
+(null, 150, 1194.43, 	"GOOG"),
+(null, 200, 1814.19, 	"AMZN");
+```
+
+4. Create a DB user for the JDBC connection into the DB
+
+```
+create user 'dbUser'@'localhost';
+set password for 'dbUser'@'localhost' = "password"; // substitute in a real password as defined in hibernate.cfg.xml
+grant all on dundry.* to 'dbUser'@'localhost';
+```
 ## Todo
 
 1. Use Dependency Injection
