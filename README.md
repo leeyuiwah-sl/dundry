@@ -14,7 +14,7 @@ This project has three subsystems
 2. dundry-b-lib: keeping a DataManager for the data items
 3. dundry-app: the main driver program making use the above two libraries
 
-## How to run
+## How to Run
 
 Pre-requisit: 
 
@@ -39,7 +39,7 @@ Got 4 items from the DB
 Total number of items: 4
 ```
 
-## How to build (For Developers only)
+## How to Build (For Developers Only)
 
 This project uses gradle.  If you do not have gradle on your system yet, please 
 follow the procedures of this page to install it:
@@ -107,7 +107,14 @@ create user 'dbUser'@'localhost';
 set password for 'dbUser'@'localhost' = "password"; // substitute in a real password as defined in hibernate.cfg.xml
 grant all on dundry.* to 'dbUser'@'localhost';
 ```
-## Potential future enhancement
+
+## Troubleshooting Guide
+
+1. Error: Failed to set up DataManager
+
+Check if your local DB instance is up and running.  Please refer to the section of "Setting Up a Local Database" for more details.
+
+## Potential Future Enhancement
 
 1. Use Dependency Injection
 
