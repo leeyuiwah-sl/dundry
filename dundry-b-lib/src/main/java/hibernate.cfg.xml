@@ -25,7 +25,7 @@
         <!-- Echo all executed SQL to stdout -->
         <property name="show_sql">true</property>
 
-        <mapping class="dundry.model.TestTable"/>
+        <mapping class="dundry.model.Item"/>
 
     </session-factory>
 

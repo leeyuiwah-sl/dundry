@@ -2,7 +2,7 @@ package dundry.app;
 
 import dundry.greeter.Greeter;
 import dundry.index_gen.IndexGen;
-import dundry.model.TestTable;
+import dundry.model.Item;
 
 public class DundryApp {
 
@@ -52,7 +52,7 @@ public class DundryApp {
             System.out.println(greeter.greet(i));
         }
         
-        TestTable t;
+        Item t;
 
     }
 

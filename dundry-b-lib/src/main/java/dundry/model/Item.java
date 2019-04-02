@@ -9,7 +9,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table( name = "test_table")
-public class TestTable {
+public class Item {
     private Long    test_table_id;
     private Integer test_int;
     private Float   test_float;

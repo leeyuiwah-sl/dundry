@@ -11,7 +11,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import dundry.model.TestTable;
+import dundry.model.Item;
 
 public class TestTableTest {
 
@@ -44,8 +44,8 @@ public class TestTableTest {
         session.beginTransaction();
         
         @SuppressWarnings("unchecked")
-        List<TestTable> results = (List<TestTable>) session.createQuery("from TestTable").list();
-        for ( TestTable r :  results) {
+        List<Item> results = (List<Item>) session.createQuery("from Item").list();
+        for ( Item r :  results) {
             String msg = String.format("%10d %10d %10.2f %s%n", r.getTest_table_id(),
                     r.getTest_int(), r.getTest_float(), r.getTest_string());
             System.out.print(msg);
