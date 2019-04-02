@@ -115,4 +115,7 @@ grant all on dundry.* to 'dbUser'@'localhost';
 
 3. Add logging 
 
-4. Move the DB instance to the cloud so that casual users do not need to set up a local database instance to try out the program.
+4. Consider setting up a DB instance in the cloud so that casual users do not need to set up a local database instance to try out the program.
+
+5. Consider encrypting the DB connection password in hibernate.cfg.xml
+
