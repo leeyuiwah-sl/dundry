@@ -99,8 +99,10 @@ create user 'dbUser'@'localhost';
 set password for 'dbUser'@'localhost' = "password"; // substitute in a real password as defined in hibernate.cfg.xml
 grant all on dundry.* to 'dbUser'@'localhost';
 ```
-## Todo
+## Potential future enhancement
 
 1. Use Dependency Injection
 
 2. Refactor common setting in gradle scripts of sub-systems
+
+3. Add logging 

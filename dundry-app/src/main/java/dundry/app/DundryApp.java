@@ -1,5 +1,8 @@
 package dundry.app;
 
+import java.util.List;
+
+import dundry.data_manager.DataManager;
 import dundry.greeter.Greeter;
 import dundry.index_gen.IndexGen;
 import dundry.model.Item;
@@ -52,7 +55,16 @@ public class DundryApp {
             System.out.println(greeter.greet(i));
         }
         
-        Item t;
+        List<Item> items = DataManager.getItems();
+        String msg = String.format("Got %d items from the DB%n", items.size());
+        System.out.print(msg);
+        for ( Item r :  items) {
+            msg = String.format("%10d %10d %10.2f %s%n", r.getTest_table_id(),
+                    r.getTest_int(), r.getTest_float(), r.getTest_string());
+            System.out.print(msg);
+        }
+        msg = String.format("Total number of items: %d%n", items.size());
+        System.out.print(msg);
 
     }
 
