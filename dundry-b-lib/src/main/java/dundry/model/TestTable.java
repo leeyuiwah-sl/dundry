@@ -1,4 +1,4 @@
-package dundry.hibernate.first;
+package dundry.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

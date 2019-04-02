@@ -11,6 +11,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import dundry.model.TestTable;
+
 public class TestTableTest {
 
     private SessionFactory sessionFactory;
@@ -25,6 +27,7 @@ public class TestTableTest {
                 = new MetadataSources(registry).buildMetadata().buildSessionFactory();
         } catch  (Exception e) {
             StandardServiceRegistryBuilder.destroy(registry);
+            throw e;
         }
     }
 

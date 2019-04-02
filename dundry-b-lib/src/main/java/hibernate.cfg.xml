@@ -25,7 +25,7 @@
         <!-- Echo all executed SQL to stdout -->
         <property name="show_sql">true</property>
 
-        <mapping class="dundry.hibernate.first.TestTable"/>
+        <mapping class="dundry.model.TestTable"/>
 
     </session-factory>
 

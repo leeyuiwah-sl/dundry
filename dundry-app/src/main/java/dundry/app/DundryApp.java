@@ -2,6 +2,7 @@ package dundry.app;
 
 import dundry.greeter.Greeter;
 import dundry.index_gen.IndexGen;
+import dundry.model.TestTable;
 
 public class DundryApp {
 
@@ -50,6 +51,8 @@ public class DundryApp {
         for (int i=langMin; i<langMax; i++) {            
             System.out.println(greeter.greet(i));
         }
+        
+        TestTable t;
 
     }
 
