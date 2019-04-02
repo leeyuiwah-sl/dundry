@@ -110,7 +110,32 @@ grant all on dundry.* to 'dbUser'@'localhost';
 
 ## Troubleshooting Guide
 
-1. Error: Failed to set up DataManager
+1. Error: Failed to set up DataManager. Please double check that your local database instance is up and running
+
+2. Warning message during build.
+
+If you see the following warning message during build, then please check your local database instance and make sure that it is up and running
+
+You can ignore this message (the test had failed, but the build may still be okay)
+
+```
+C:\Users\clee\proj\dundry>gradlew build
+
+> Task :dundry-b-lib:test
+
+dundry.hibernate.first.TestTableTest > testReadingFromDb FAILED
+    org.hibernate.service.spi.ServiceException at TestTableTest.java:27
+        Caused by: org.hibernate.exception.JDBCConnectionException at TestTableTest.java:27
+            Caused by: com.mysql.cj.jdbc.exceptions.CommunicationsException at TestTableTest.java:27
+                Caused by: com.mysql.cj.exceptions.CJCommunicationsException at TestTableTest.java:27
+                    Caused by: java.net.ConnectException at TestTableTest.java:27
+
+2 tests completed, 1 failed
+There were failing tests. See the report at: file:///C:/Users/clee/proj/dundry/dundry-b-lib/build/reports/tests/test/index.html
+
+BUILD SUCCESSFUL in 9s
+18 actionable tasks: 18 executed
+```
 
 Check if your local DB instance is up and running.  Please refer to the section of "Setting Up a Local Database" for more details.
 

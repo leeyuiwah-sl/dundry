@@ -25,7 +25,8 @@ public class DataManager {
                 = new MetadataSources(registry).buildMetadata().buildSessionFactory();
         } catch  (Exception e) {
             StandardServiceRegistryBuilder.destroy(registry);
-            final String msg = "Failed to set up DataManager";
+            final String msg = "Failed to set up DataManager.  Please double check that your "
+                    + "local database instance is up and running";
             System.out.println(msg);
         }
     }

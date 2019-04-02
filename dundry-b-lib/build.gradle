@@ -14,3 +14,7 @@ processResources {
     include '**/*.xml'  // e.g. hibernate.cfg.xml
   }
 }
+
+test {
+	ignoreFailures = true
+}
