@@ -8,3 +8,9 @@ dependencies {
 	testImplementation 'junit:junit:4.12'
 	runtime "mysql:mysql-connector-java:8.0.15"
 }
+
+processResources {
+  from ('src/main/java') {
+    include '**/*.xml'  // e.g. hibernate.cfg.xml
+  }
+}
