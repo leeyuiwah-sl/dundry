@@ -2,9 +2,9 @@
 
 Dundry is a village and civil parish, situated on Dundry Hill to the south of Bristol.
 
-The villagers can greet visitors in different languages: English, French, etc.
+The villagers would greet visitors in English and say "Hello World!"
 
-They also have a hobby of playing with some data items, and they love to show those data items to their visitor after the greeting.
+They also have a hobby of playing with some items of substantial values, and they love to show the data of these items to their visitor after the greeting.
 
 ## Project Structure
 
@@ -110,9 +110,9 @@ grant all on dundry.* to 'dbUser'@'localhost';
 
 ## Troubleshooting Guide
 
-1. Error: Failed to set up DataManager. Please double check that your local database instance is up and running
+### Error: Failed to set up DataManager. Please double check that your local database instance is up and running
 
-2. Warning message during build.
+### Warning message during build.
 
 If you see the following warning message during build, then please check your local database instance and make sure that it is up and running
 
@@ -139,7 +139,24 @@ BUILD SUCCESSFUL in 9s
 
 Check if your local DB instance is up and running.  Please refer to the section of "Setting Up a Local Database" for more details.
 
-## Potential Future Enhancement
+### You expect some log messages from Hibernate but they are not shown
+
+(Developers only) 
+
+Since we have not set up logging for this project, currently the log messages from Hibernate are sent to `System.err` (standard error).  They would be distracting to end users in production mode.  As such we switched off the standard error in production mode.
+
+If you want to re-enable hibernate messages, or see standard error messages in general, you can edit an internal boolean variable `debug` in the file `DundryApp.java` and set it to true:
+
+```
+    final static boolean debug = false;
+    private static void redirectStdErr() {
+        if (!debug) {
+            System.err.close();
+        }        
+    }
+```
+
+## Potential Future Enhancements
 
 1. Use Dependency Injection
 
