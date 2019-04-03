@@ -66,6 +66,24 @@ Got 4 items from the DB
 Total number of items: 4
 ```
 
+Or if you prefer to avoid the above long command line, you can also use the `run` task of gradle
+
+```
+$ gradlew run
+
+> Task :dundry-app:run
+Hello, World!
+Got 4 items from the DB
+         1        100     191.24 AAPL
+         2        200     168.70 FB
+         3        150    1194.43 GOOG
+         4        200    1814.19 AMZN
+Total number of items: 4
+
+BUILD SUCCESSFUL in 3s
+7 actionable tasks: 1 executed, 6 up-to-date
+```
+
 ## Setting Up a Local Database
 
 1. Download and configure a local MySQL database
