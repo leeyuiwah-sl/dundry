@@ -16,7 +16,7 @@ This project has three subsystems
 
 ## How to Run
 
-Pre-requisit: 
+Prerequisite: 
 
 1. You should have Java JRE or JDK installed on your system
 2. For now the DataManager is backed by a local MySQL instance.  You should have set up this instance with a database and a table.  Please see the section for "Setting Up a Local Database"
@@ -54,8 +54,11 @@ Download the project zip file, and unzip it and put the top-level directory (e.g
 $ cd _top_dir_
 $ gradle wrapper 
 $ gradlew.bat build
+```
 
-$ # test run the program
+### Test run after build
+
+```
 $ java -jar dundry-app/build/libs/dundry-app-1.0-all.jar a
 Hello, World!
 Got 4 items from the DB
@@ -83,6 +86,10 @@ Total number of items: 4
 BUILD SUCCESSFUL in 3s
 7 actionable tasks: 1 executed, 6 up-to-date
 ```
+
+### Gradle build in Eclipse and IntelliJ
+
+It is also possible to run gradle build in Eclipse and IntelliJ
 
 ## Setting Up a Local Database
 
