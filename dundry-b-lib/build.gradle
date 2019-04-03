@@ -9,12 +9,6 @@ dependencies {
 	runtime "mysql:mysql-connector-java:8.0.15"
 }
 
-processResources {
-  from ('src/main/java') {
-    include '**/*.xml'  // e.g. hibernate.cfg.xml
-  }
-}
-
 test {
 	ignoreFailures = true
 }
