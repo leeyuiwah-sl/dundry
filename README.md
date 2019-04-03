@@ -76,11 +76,11 @@ create database dundry;
 use dundry;
 drop table if exists test_table;
 create table test_table  (
-  test_table_id	 	int not null auto_increment,
-  test_int	 		int,
-  test_float	 	float,
-  test_string 		varchar(256),
-  primary key		(test_table_id)
+  test_table_id     int not null auto_increment,
+  test_int          int,
+  test_float        float,
+  test_string       varchar(256),
+  primary key       (test_table_id)
 );
 ```
 
@@ -88,10 +88,10 @@ create table test_table  (
 
 ```
 insert into test_table values 
-(null, 100, 191.24, 	"AAPL"),
-(null, 200, 168.70, 	"FB"),
-(null, 150, 1194.43, 	"GOOG"),
-(null, 200, 1814.19, 	"AMZN");
+(null, 100, 191.24,     "AAPL"),
+(null, 200, 168.70,     "FB"),
+(null, 150, 1194.43,    "GOOG"),
+(null, 200, 1814.19,    "AMZN");
 ```
 
 4. Testing the table contents using an SQL query
