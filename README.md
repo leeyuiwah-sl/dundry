@@ -132,6 +132,8 @@ grant all on dundry.* to 'dbUser'@'localhost';
 
 ### Warning message during build.
 
+(Developers only) 
+
 If you see the following warning message during build, then please check your local database instance and make sure that it is up and running
 
 You can ignore this message (the test had failed, but the build may still be okay)
@@ -173,6 +175,22 @@ If you want to re-enable hibernate messages, or see standard error messages in g
         }        
     }
 ```
+
+### Failed gradle build within Eclipse
+
+If you gradle build works in a Windows `cmd` window, but fails within `Eclipse`, with this error message:
+
+```
+> Task :dundry-a-lib:compileJava FAILED
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':dundry-a-lib:compileJava'.
+> Could not find tools.jar. Please check that C:\Program Files\Java\jre1.8.0_191 contains a valid JDK installation.
+```
+
+Then please try the various tips on [this Q&A from StackOverflow.com](https://stackoverflow.com/questions/37669664/eclipse-gradle-build-could-not-find-tools-jar).  Specifically I tried the suggestion of upgrading JDK (which is a good thing to do anyway) to the latest update number (same major and minor versions of 1.8) and the problem went away.
 
 ## Potential Future Enhancements
 
