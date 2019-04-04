@@ -30,10 +30,9 @@ public class TestKafkaConsumer {
 
             //print each record. 
             consumerRecords.forEach(record -> {
-                System.out.println("Record Key " + record.key());
-                System.out.println("Record value " + record.value());
-                System.out.println("Record partition " + record.partition());
-                System.out.println("Record offset " + record.offset());
+                String msg = String.format("Receiving record with key %d from partition %s with offset %d: %s%n",
+                        record.key(), record.partition(), record.offset(), record.value());
+                System.out.print(msg);
             });
 
             // commits the offset of record to broker. 

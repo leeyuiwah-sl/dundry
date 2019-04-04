@@ -18,14 +18,20 @@ public class TestKafkaProducer {
 
     static void runProducer() {
         Producer<Long, String> producer = ProducerFactory.createProducer();
-        for (int index = 0; index < Constants.MESSAGE_COUNT; index++) {
-            ProducerRecord<Long, String> record = new ProducerRecord<>(Constants.TOPIC_NAME,
-                    "This is record " + index);
+        System.out.format("Producer about the sent %d records%n", Constants.MESSAGE_COUNT);
+        for (long key = 0; key < Constants.MESSAGE_COUNT; key++) {
+            final Integer PARTITION = 0;    // for now we use only one partition
+            String value = String.format("%4d claps", key);
+            
+            // key is index; value is clap
+            ProducerRecord<Long, String> record 
+                = new ProducerRecord<>(Constants.TOPIC_NAME, PARTITION, key, value);
             try {
                 RecordMetadata metadata = producer.send(record).get();
-                System.out.println("Record sent with key " + index 
-                        + " to partition " + metadata.partition()
-                        + " with offset "  + metadata.offset());
+                String msg = String.format("Sending record with key %d to partition %s "
+                        + "with offset %d: %s%n",
+                        key, metadata.partition(), metadata.offset(), value);
+                System.out.print(msg);
             } catch (ExecutionException e) {
                      System.out.println("Error in sending record");
                      System.out.println(e);
@@ -34,5 +40,6 @@ public class TestKafkaProducer {
                       System.out.println(e);
             }
          }
+        System.out.format("%nDone!%n");
     }    
 }
