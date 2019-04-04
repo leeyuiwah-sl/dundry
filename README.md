@@ -41,18 +41,14 @@ Total number of items: 4
 
 ## How to Build (For Developers Only)
 
-This project uses gradle.  If you do not have gradle on your system yet, please 
-follow the procedures of this page to install it:
+Note: This project uses gradle.  However, there gradle wrapper files (two script files and a small gradle-wrapper.jar and gradle-wrapper.properties) that come with the source distribution and let you use gradle without needing to download and install the full gradle distribution.  This is the recommended way of using gradle (c.f. https://docs.gradle.org/current/dsl/org.gradle.api.tasks.wrapper.Wrapper.html) although some may find it a bit odd that we would check in a jar file into Git.
 
-  https://docs.gradle.org/current/userguide/installation.html
-
-Download the project zip file, and unzip it and put the top-level directory (e.g. `dundry-master` into a centain top-level directory _top_dir_  
+Download the project zip file (`dundry-master.zip`) from github, and unzip it and put the top-level directory (e.g. `dundry-master` into a centain top-level directory _top_dir_  
 
 (Below assumes that you are doing this in a Windows environment.  If you are using UNIX instead, then swap the executable `gradlew.bat` for `gradlew`)
 
 ```
 $ cd _top_dir_
-$ gradle wrapper 
 $ gradlew.bat build
 ```
 
