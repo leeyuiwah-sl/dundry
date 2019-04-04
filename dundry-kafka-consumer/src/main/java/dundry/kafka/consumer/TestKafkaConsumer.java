@@ -1,11 +1,10 @@
-package dundry.app;
+package dundry.kafka.consumer;
 
 import java.time.Duration;
 
 import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import dundry.kafka.common.Constants;
-import dundry.kafka.consumer.ConsumerFactory;
 
 public class TestKafkaConsumer {
 
@@ -16,6 +15,7 @@ public class TestKafkaConsumer {
     static void runConsumer() {
         Consumer<Long, String> consumer = ConsumerFactory.createConsumer();
         int noMessageFound = 0;
+        System.out.format("Prepared to receive message from Topic: %s ...%n", Constants.TOPIC_NAME);
         while (true) {
             ConsumerRecords<Long, String> consumerRecords = consumer.poll(Duration.ofMillis(1000)); 
 
@@ -28,14 +28,12 @@ public class TestKafkaConsumer {
                     continue;
             }
 
-            //print each record. 
             consumerRecords.forEach(record -> {
                 String msg = String.format("Receiving record with key %d from partition %s with offset %d: %s%n",
                         record.key(), record.partition(), record.offset(), record.value());
                 System.out.print(msg);
             });
 
-            // commits the offset of record to broker. 
             consumer.commitAsync();
         }
 

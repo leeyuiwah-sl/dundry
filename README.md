@@ -2,19 +2,29 @@
 
 Dundry is a village and civil parish, situated on Dundry Hill to the south of Bristol.
 
-The villagers would greet visitors in English and say "Hello World!"
+Phase 1 Story: The villagers would greet visitors in English and say "Hello World!"
 
-They also have a hobby of playing with some items of substantial values, and they love to show the data of these items to their visitor after the greeting.
+Phase 2 Story: They also have a hobby of playing with some items of substantial values, and they love to show the data of these items to their visitor after the greeting.
+
+Phase 3 Story: The villagers also like to express their friendliness by clapping to visitors.  However, they prefer to send these claps by using either a message queue or a publish/subscribe model.  As such, they will ask visitor to adopt the Kafka technology to receive these claps.
 
 ## Project Structure
 
 This project has three subsystems
 
+*Phases 1 and 2 stories*
+
 1. dundry-a-lib: keeping the dictionary of greetings 
 2. dundry-b-lib: keeping a DataManager for the data items
 3. dundry-app: the main driver program making use the above two libraries
 
-## How to Run
+*Phase 3 story*
+
+4. dundry-kafka-producer: a villager sending claps to a visitor
+5. dundry-kafka-consumer: a visitor receiving claps from a visitor
+6. dundry-kafka-common: parameters that have been agreed upon by both the producer and the receiver
+
+## Phases 1 & 2: How to Run
 
 Prerequisite: 
 
@@ -38,6 +48,86 @@ Got 4 items from the DB
          4        200    1814.19 AMZN
 Total number of items: 4
 ```
+## Phase 3: How to run 
+
+### Prerequisite: 
+1. zookeeper
+2. kafka 
+
+If you are using Windows, you can following the procedures in these two articles to set up zookeeper and kafka 
+
+1. [Installing Apache ZooKeeper on Windows](https://medium.com/@shaaslam/installing-apache-zookeeper-on-windows-45eda303e835)
+2. [Installing Apache Kafka on Windows](https://medium.com/@shaaslam/installing-apache-kafka-on-windows-495f6f2fd3c8)
+
+#### Configuration parameters for `kafka` 
+
+1. Kafka Broker Port: 9092.  Defined in
+   * KAFKA_HOME/config/server.properties: `listeners=PLAINTEXT://:9092`
+   * dundry-kafka-common/Constant.java: `KAFKA_BROKERS               = "localhost:9092"`   
+
+
+### Steps
+
+1. Start zookeeper
+
+```
+$ zkserver
+```
+
+2. Start kafka 
+
+(Assuming you are running in a windows environment)
+```
+c:\opt\kafka_2.12-2.2.0\bin\windows>kafka-server-start.bat ..\..\config\server.properties
+```
+
+3. Start Consumer 
+
+(Note: for now there are some System.err messages that can be safely ignored.)
+
+In a `cmd` window:
+```
+$ cd _top_dir_
+gradlew  :dundry-kafka-consumer:run
+
+> Task :dundry-kafka-consumer:run
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+Prepared to receive message from Topic: southwest2 ...
+```
+
+4. Start Producer
+```
+$ cd _top_dir_
+$ gradlew :dundry-kafka-producer:run
+Starting a Gradle Daemon, 1 busy and 3 stopped Daemons could not be reused, use --status for details
+
+> Task :dundry-kafka-producer:run
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+Prepared to send message from Topic: southwest2 ...
+Producer about to sent 3 records
+Sending record with key 0 to partition 0 with offset 1000:    1 claps
+Sending record with key 1 to partition 0 with offset 1001:    2 claps
+Sending record with key 2 to partition 0 with offset 1002:    3 claps
+
+Done!
+
+BUILD SUCCESSFUL in 6s
+4 actionable tasks: 2 executed, 2 up-to-date
+```
+
+5. Examine the result of the Consumer
+```
+Receiving record with key 0 from partition 0 with offset 1000:    1 claps
+Receiving record with key 1 from partition 0 with offset 1001:    2 claps
+Receiving record with key 2 from partition 0 with offset 1002:    3 claps
+<===========--> 87% EXECUTING [32s]
+> :dundry-kafka-consumer:run```
+```
+(Press Ctrl-C to terminate the consumer)
 
 ## How to Build (For Developers Only)
 
@@ -52,7 +142,7 @@ $ cd _top_dir_
 $ gradlew.bat build
 ```
 
-### Test run after build
+### Test run after build (Phases 1 & 2)
 
 ```
 $ java -jar dundry-app/build/libs/dundry-app-1.0-all.jar a
@@ -87,7 +177,7 @@ BUILD SUCCESSFUL in 3s
 
 It is also possible to run gradle build in Eclipse and IntelliJ
 
-## Setting Up a Local Database
+## Setting Up a Local Database (for Phases 1 and 2)
 
 1. Download and configure a local MySQL database
 

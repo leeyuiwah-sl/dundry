@@ -12,5 +12,4 @@ dependencies {
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.9.5'
 }
 
-// mainClassName = 'dundry.app.DundryApp'
-mainClassName = 'dundry.app.TestKafkaProducer'
+mainClassName = 'dundry.app.DundryApp'
