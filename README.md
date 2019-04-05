@@ -83,17 +83,12 @@ c:\opt\kafka_2.12-2.2.0\bin\windows>kafka-server-start.bat ..\..\config\server.p
 
 3. Start Consumer 
 
-(Note: for now there are some System.err messages that can be safely ignored.)
-
 In a `cmd` window:
 ```
 $ cd _top_dir_
 gradlew  :dundry-kafka-consumer:run
 
 > Task :dundry-kafka-consumer:run
-SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
-SLF4J: Defaulting to no-operation (NOP) logger implementation
-SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
 Prepared to receive message from Topic: southwest2 ...
 ```
 
@@ -105,10 +100,7 @@ $ gradlew :dundry-kafka-producer:run
 Starting a Gradle Daemon, 1 busy and 3 stopped Daemons could not be reused, use --status for details
 
 > Task :dundry-kafka-producer:run
-SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
-SLF4J: Defaulting to no-operation (NOP) logger implementation
-SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
-Prepared to send message from Topic: southwest2 ...
+Prepared to send message to Topic: southwest2 ...
 Producer about to sent 3 records
 Sending record with key 0 to partition 0 with offset 1000:    1 claps
 Sending record with key 1 to partition 0 with offset 1001:    2 claps
@@ -131,6 +123,20 @@ Receiving record with key 2 from partition 0 with offset 1002:    3 claps
 ```
 (Press Ctrl-C to terminate the consumer)
 
+### Log files location
+
+For Phase 3, the log files of Producer and Consumer are located in these location respectively:
+
+```
+dundry\dundry-kafka-producer\producer.log
+dundry\dundry-kafka-consumer\consumer.log
+```
+
+If you want to adjust the logging level, you can edit these two files respectively:
+```
+dundry\dundry-kafka-producer\src\main\resources\log4j.properties
+dundry\dundry-kafka-consumer\src\main\resources\log4j.properties
+```
 ## How to Build (For Developers Only)
 
 Note: This project uses gradle.  However, there gradle wrapper files (two script files and a small gradle-wrapper.jar and gradle-wrapper.properties) that come with the source distribution and let you use gradle without needing to download and install the full gradle distribution.  This is the recommended way of using gradle (c.f. https://docs.gradle.org/current/dsl/org.gradle.api.tasks.wrapper.Wrapper.html) although some may find it a bit odd that we would check in a jar file into Git.
