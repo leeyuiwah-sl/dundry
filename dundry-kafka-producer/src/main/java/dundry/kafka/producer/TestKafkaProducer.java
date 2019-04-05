@@ -19,7 +19,7 @@ public class TestKafkaProducer {
     static void runProducer() {
         Producer<Long, String> producer = ProducerFactory.createProducer();
         System.out.format("Prepared to send message from Topic: %s ...%n", Constants.TOPIC_NAME);
-        System.out.format("Producer about to sent %d records%n", Constants.MESSAGE_COUNT);
+        System.out.format("Producer about to send %d records%n", Constants.MESSAGE_COUNT);
         for (long key = 0; key < Constants.MESSAGE_COUNT; key++) {
             final Integer PARTITION = 0;    // for now we use only one partition
             String value = String.format("%4d claps", key+1);

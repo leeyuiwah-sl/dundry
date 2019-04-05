@@ -98,6 +98,7 @@ Prepared to receive message from Topic: southwest2 ...
 ```
 
 4. Start Producer
+Open another `cmd` window for Producer:
 ```
 $ cd _top_dir_
 $ gradlew :dundry-kafka-producer:run
@@ -120,6 +121,7 @@ BUILD SUCCESSFUL in 6s
 ```
 
 5. Examine the result of the Consumer
+Now switch back to the `cmd` window for Consumer, you should see something like this:
 ```
 Receiving record with key 0 from partition 0 with offset 1000:    1 claps
 Receiving record with key 1 from partition 0 with offset 1001:    2 claps
