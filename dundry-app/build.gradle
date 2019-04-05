@@ -8,6 +8,8 @@ plugins {
 dependencies {
     implementation project(':dundry-a-lib') 
     implementation project(':dundry-b-lib') 
+    implementation 'org.apache.kafka:kafka-clients:2.2.0'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.9.5'
 }
 
 mainClassName = 'dundry.app.DundryApp'

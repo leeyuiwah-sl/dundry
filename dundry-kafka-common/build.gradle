@@ -1,0 +1,8 @@
+plugins {
+    id 'java-library'
+	id 'eclipse'
+}
+
+dependencies {
+    testImplementation 'junit:junit:4.12'
+}

@@ -1,0 +1,14 @@
+plugins {
+    id 'java'
+    id 'application'
+	id 'eclipse'
+}
+
+dependencies {
+    implementation project(':dundry-kafka-common') 
+    implementation 'org.apache.kafka:kafka-clients:2.2.0'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.9.5'
+	testImplementation 'junit:junit:4.12'
+}
+
+mainClassName = 'dundry.kafka.producer.TestKafkaProducer'

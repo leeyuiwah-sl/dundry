@@ -70,7 +70,7 @@ public class DundryApp {
 
     }
 
-    final static boolean debug = false;
+    final static boolean debug = true;
     private static void redirectStdErr() {
         if (!debug) {
             System.err.close();
